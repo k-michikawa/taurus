@@ -232,7 +232,7 @@ func (*ListUserRequest) Descriptor() ([]byte, []int) {
 	return file_proto_user_proto_rawDescGZIP(), []int{2}
 }
 
-type ReadUserRequest struct {
+type FindUserRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -240,8 +240,8 @@ type ReadUserRequest struct {
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 }
 
-func (x *ReadUserRequest) Reset() {
-	*x = ReadUserRequest{}
+func (x *FindUserRequest) Reset() {
+	*x = FindUserRequest{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_proto_user_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -249,13 +249,13 @@ func (x *ReadUserRequest) Reset() {
 	}
 }
 
-func (x *ReadUserRequest) String() string {
+func (x *FindUserRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ReadUserRequest) ProtoMessage() {}
+func (*FindUserRequest) ProtoMessage() {}
 
-func (x *ReadUserRequest) ProtoReflect() protoreflect.Message {
+func (x *FindUserRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_proto_user_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -267,12 +267,12 @@ func (x *ReadUserRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ReadUserRequest.ProtoReflect.Descriptor instead.
-func (*ReadUserRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use FindUserRequest.ProtoReflect.Descriptor instead.
+func (*FindUserRequest) Descriptor() ([]byte, []int) {
 	return file_proto_user_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *ReadUserRequest) GetId() string {
+func (x *FindUserRequest) GetId() string {
 	if x != nil {
 		return x.Id
 	}
@@ -492,7 +492,7 @@ func (x *ListUserResponse) GetUsers() []*User {
 	return nil
 }
 
-type ReadUserResponse struct {
+type FindUserResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -500,8 +500,8 @@ type ReadUserResponse struct {
 	User *User `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
 }
 
-func (x *ReadUserResponse) Reset() {
-	*x = ReadUserResponse{}
+func (x *FindUserResponse) Reset() {
+	*x = FindUserResponse{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_proto_user_proto_msgTypes[8]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -509,13 +509,13 @@ func (x *ReadUserResponse) Reset() {
 	}
 }
 
-func (x *ReadUserResponse) String() string {
+func (x *FindUserResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ReadUserResponse) ProtoMessage() {}
+func (*FindUserResponse) ProtoMessage() {}
 
-func (x *ReadUserResponse) ProtoReflect() protoreflect.Message {
+func (x *FindUserResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_proto_user_proto_msgTypes[8]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -527,12 +527,12 @@ func (x *ReadUserResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ReadUserResponse.ProtoReflect.Descriptor instead.
-func (*ReadUserResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use FindUserResponse.ProtoReflect.Descriptor instead.
+func (*FindUserResponse) Descriptor() ([]byte, []int) {
 	return file_proto_user_proto_rawDescGZIP(), []int{8}
 }
 
-func (x *ReadUserResponse) GetUser() *User {
+func (x *FindUserResponse) GetUser() *User {
 	if x != nil {
 		return x.User
 	}
@@ -644,7 +644,7 @@ var file_proto_user_proto_rawDesc = []byte{
 	0x01, 0x28, 0x09, 0x52, 0x05, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x12, 0x1a, 0x0a, 0x08, 0x70, 0x61,
 	0x73, 0x73, 0x77, 0x6f, 0x72, 0x64, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x70, 0x61,
 	0x73, 0x73, 0x77, 0x6f, 0x72, 0x64, 0x22, 0x11, 0x0a, 0x0f, 0x4c, 0x69, 0x73, 0x74, 0x55, 0x73,
-	0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x21, 0x0a, 0x0f, 0x52, 0x65, 0x61,
+	0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x21, 0x0a, 0x0f, 0x46, 0x69, 0x6e,
 	0x64, 0x55, 0x73, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x0e, 0x0a, 0x02,
 	0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x22, 0x69, 0x0a, 0x11,
 	0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x55, 0x73, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
@@ -662,8 +662,8 @@ var file_proto_user_proto_rawDesc = []byte{
 	0x65, 0x72, 0x22, 0x36, 0x0a, 0x10, 0x4c, 0x69, 0x73, 0x74, 0x55, 0x73, 0x65, 0x72, 0x52, 0x65,
 	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x22, 0x0a, 0x05, 0x75, 0x73, 0x65, 0x72, 0x73, 0x18,
 	0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x0c, 0x2e, 0x74, 0x61, 0x75, 0x72, 0x75, 0x73, 0x2e, 0x55,
-	0x73, 0x65, 0x72, 0x52, 0x05, 0x75, 0x73, 0x65, 0x72, 0x73, 0x22, 0x34, 0x0a, 0x10, 0x52, 0x65,
-	0x61, 0x64, 0x55, 0x73, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x20,
+	0x73, 0x65, 0x72, 0x52, 0x05, 0x75, 0x73, 0x65, 0x72, 0x73, 0x22, 0x34, 0x0a, 0x10, 0x46, 0x69,
+	0x6e, 0x64, 0x55, 0x73, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x20,
 	0x0a, 0x04, 0x75, 0x73, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x0c, 0x2e, 0x74,
 	0x61, 0x75, 0x72, 0x75, 0x73, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x52, 0x04, 0x75, 0x73, 0x65, 0x72,
 	0x22, 0x36, 0x0a, 0x12, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x55, 0x73, 0x65, 0x72, 0x52, 0x65,
@@ -680,9 +680,9 @@ var file_proto_user_proto_rawDesc = []byte{
 	0x75, 0x73, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x55, 0x73, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65,
 	0x73, 0x74, 0x1a, 0x18, 0x2e, 0x74, 0x61, 0x75, 0x72, 0x75, 0x73, 0x2e, 0x4c, 0x69, 0x73, 0x74,
 	0x55, 0x73, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x3d, 0x0a, 0x08,
-	0x52, 0x65, 0x61, 0x64, 0x55, 0x73, 0x65, 0x72, 0x12, 0x17, 0x2e, 0x74, 0x61, 0x75, 0x72, 0x75,
-	0x73, 0x2e, 0x52, 0x65, 0x61, 0x64, 0x55, 0x73, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
-	0x74, 0x1a, 0x18, 0x2e, 0x74, 0x61, 0x75, 0x72, 0x75, 0x73, 0x2e, 0x52, 0x65, 0x61, 0x64, 0x55,
+	0x46, 0x69, 0x6e, 0x64, 0x55, 0x73, 0x65, 0x72, 0x12, 0x17, 0x2e, 0x74, 0x61, 0x75, 0x72, 0x75,
+	0x73, 0x2e, 0x46, 0x69, 0x6e, 0x64, 0x55, 0x73, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
+	0x74, 0x1a, 0x18, 0x2e, 0x74, 0x61, 0x75, 0x72, 0x75, 0x73, 0x2e, 0x46, 0x69, 0x6e, 0x64, 0x55,
 	0x73, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x43, 0x0a, 0x0a, 0x55,
 	0x70, 0x64, 0x61, 0x74, 0x65, 0x55, 0x73, 0x65, 0x72, 0x12, 0x19, 0x2e, 0x74, 0x61, 0x75, 0x72,
 	0x75, 0x73, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x55, 0x73, 0x65, 0x72, 0x52, 0x65, 0x71,
@@ -712,28 +712,28 @@ var file_proto_user_proto_goTypes = []interface{}{
 	(*User)(nil),               // 0: taurus.User
 	(*PostUserRequest)(nil),    // 1: taurus.PostUserRequest
 	(*ListUserRequest)(nil),    // 2: taurus.ListUserRequest
-	(*ReadUserRequest)(nil),    // 3: taurus.ReadUserRequest
+	(*FindUserRequest)(nil),    // 3: taurus.FindUserRequest
 	(*UpdateUserRequest)(nil),  // 4: taurus.UpdateUserRequest
 	(*DeleteUserRequest)(nil),  // 5: taurus.DeleteUserRequest
 	(*PostUserResponse)(nil),   // 6: taurus.PostUserResponse
 	(*ListUserResponse)(nil),   // 7: taurus.ListUserResponse
-	(*ReadUserResponse)(nil),   // 8: taurus.ReadUserResponse
+	(*FindUserResponse)(nil),   // 8: taurus.FindUserResponse
 	(*UpdateUserResponse)(nil), // 9: taurus.UpdateUserResponse
 	(*DeleteUserResponse)(nil), // 10: taurus.DeleteUserResponse
 }
 var file_proto_user_proto_depIdxs = []int32{
 	0,  // 0: taurus.PostUserResponse.user:type_name -> taurus.User
 	0,  // 1: taurus.ListUserResponse.users:type_name -> taurus.User
-	0,  // 2: taurus.ReadUserResponse.user:type_name -> taurus.User
+	0,  // 2: taurus.FindUserResponse.user:type_name -> taurus.User
 	0,  // 3: taurus.UpdateUserResponse.user:type_name -> taurus.User
 	1,  // 4: taurus.UserService.PostUser:input_type -> taurus.PostUserRequest
 	2,  // 5: taurus.UserService.ListUser:input_type -> taurus.ListUserRequest
-	3,  // 6: taurus.UserService.ReadUser:input_type -> taurus.ReadUserRequest
+	3,  // 6: taurus.UserService.FindUser:input_type -> taurus.FindUserRequest
 	4,  // 7: taurus.UserService.UpdateUser:input_type -> taurus.UpdateUserRequest
 	5,  // 8: taurus.UserService.DeleteUser:input_type -> taurus.DeleteUserRequest
 	6,  // 9: taurus.UserService.PostUser:output_type -> taurus.PostUserResponse
 	7,  // 10: taurus.UserService.ListUser:output_type -> taurus.ListUserResponse
-	8,  // 11: taurus.UserService.ReadUser:output_type -> taurus.ReadUserResponse
+	8,  // 11: taurus.UserService.FindUser:output_type -> taurus.FindUserResponse
 	9,  // 12: taurus.UserService.UpdateUser:output_type -> taurus.UpdateUserResponse
 	10, // 13: taurus.UserService.DeleteUser:output_type -> taurus.DeleteUserResponse
 	9,  // [9:14] is the sub-list for method output_type
@@ -786,7 +786,7 @@ func file_proto_user_proto_init() {
 			}
 		}
 		file_proto_user_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ReadUserRequest); i {
+			switch v := v.(*FindUserRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -846,7 +846,7 @@ func file_proto_user_proto_init() {
 			}
 		}
 		file_proto_user_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ReadUserResponse); i {
+			switch v := v.(*FindUserResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -919,7 +919,7 @@ const _ = grpc.SupportPackageIsVersion6
 type UserServiceClient interface {
 	PostUser(ctx context.Context, in *PostUserRequest, opts ...grpc.CallOption) (*PostUserResponse, error)
 	ListUser(ctx context.Context, in *ListUserRequest, opts ...grpc.CallOption) (*ListUserResponse, error)
-	ReadUser(ctx context.Context, in *ReadUserRequest, opts ...grpc.CallOption) (*ReadUserResponse, error)
+	FindUser(ctx context.Context, in *FindUserRequest, opts ...grpc.CallOption) (*FindUserResponse, error)
 	UpdateUser(ctx context.Context, in *UpdateUserRequest, opts ...grpc.CallOption) (*UpdateUserResponse, error)
 	DeleteUser(ctx context.Context, in *DeleteUserRequest, opts ...grpc.CallOption) (*DeleteUserResponse, error)
 }
@@ -950,9 +950,9 @@ func (c *userServiceClient) ListUser(ctx context.Context, in *ListUserRequest, o
 	return out, nil
 }
 
-func (c *userServiceClient) ReadUser(ctx context.Context, in *ReadUserRequest, opts ...grpc.CallOption) (*ReadUserResponse, error) {
-	out := new(ReadUserResponse)
-	err := c.cc.Invoke(ctx, "/taurus.UserService/ReadUser", in, out, opts...)
+func (c *userServiceClient) FindUser(ctx context.Context, in *FindUserRequest, opts ...grpc.CallOption) (*FindUserResponse, error) {
+	out := new(FindUserResponse)
+	err := c.cc.Invoke(ctx, "/taurus.UserService/FindUser", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -981,7 +981,7 @@ func (c *userServiceClient) DeleteUser(ctx context.Context, in *DeleteUserReques
 type UserServiceServer interface {
 	PostUser(context.Context, *PostUserRequest) (*PostUserResponse, error)
 	ListUser(context.Context, *ListUserRequest) (*ListUserResponse, error)
-	ReadUser(context.Context, *ReadUserRequest) (*ReadUserResponse, error)
+	FindUser(context.Context, *FindUserRequest) (*FindUserResponse, error)
 	UpdateUser(context.Context, *UpdateUserRequest) (*UpdateUserResponse, error)
 	DeleteUser(context.Context, *DeleteUserRequest) (*DeleteUserResponse, error)
 }
@@ -996,8 +996,8 @@ func (*UnimplementedUserServiceServer) PostUser(context.Context, *PostUserReques
 func (*UnimplementedUserServiceServer) ListUser(context.Context, *ListUserRequest) (*ListUserResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListUser not implemented")
 }
-func (*UnimplementedUserServiceServer) ReadUser(context.Context, *ReadUserRequest) (*ReadUserResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ReadUser not implemented")
+func (*UnimplementedUserServiceServer) FindUser(context.Context, *FindUserRequest) (*FindUserResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method FindUser not implemented")
 }
 func (*UnimplementedUserServiceServer) UpdateUser(context.Context, *UpdateUserRequest) (*UpdateUserResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateUser not implemented")
@@ -1046,20 +1046,20 @@ func _UserService_ListUser_Handler(srv interface{}, ctx context.Context, dec fun
 	return interceptor(ctx, in, info, handler)
 }
 
-func _UserService_ReadUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ReadUserRequest)
+func _UserService_FindUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(FindUserRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UserServiceServer).ReadUser(ctx, in)
+		return srv.(UserServiceServer).FindUser(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/taurus.UserService/ReadUser",
+		FullMethod: "/taurus.UserService/FindUser",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServiceServer).ReadUser(ctx, req.(*ReadUserRequest))
+		return srv.(UserServiceServer).FindUser(ctx, req.(*FindUserRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1113,8 +1113,8 @@ var _UserService_serviceDesc = grpc.ServiceDesc{
 			Handler:    _UserService_ListUser_Handler,
 		},
 		{
-			MethodName: "ReadUser",
-			Handler:    _UserService_ReadUser_Handler,
+			MethodName: "FindUser",
+			Handler:    _UserService_FindUser_Handler,
 		},
 		{
 			MethodName: "UpdateUser",

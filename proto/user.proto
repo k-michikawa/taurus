@@ -4,7 +4,7 @@ package taurus;
 service UserService {
     rpc PostUser (PostUserRequest) returns (PostUserResponse);
     rpc ListUser (ListUserRequest) returns (ListUserResponse);
-    rpc ReadUser (ReadUserRequest) returns (ReadUserResponse);
+    rpc FindUser (FindUserRequest) returns (FindUserResponse);
     rpc UpdateUser (UpdateUserRequest) returns (UpdateUserResponse);
     rpc DeleteUser (DeleteUserRequest) returns (DeleteUserResponse);
 }
@@ -31,7 +31,7 @@ message PostUserRequest {
 
 message ListUserRequest {}
 
-message ReadUserRequest {
+message FindUserRequest {
     string id = 1;
 }
 
@@ -55,7 +55,7 @@ message ListUserResponse {
     repeated User users = 1;
 }
 
-message ReadUserResponse {
+message FindUserResponse {
     User user = 1;
 }
 

@@ -1,0 +1,41 @@
+version: "3.8"
+
+services:
+  taurus-db:
+    image: postgres:13
+    container_name: taurus-db
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: taurus-db
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+    # 実行したSQLを標準出力に吐きたい場合
+    command: postgres -c log_destination=stderr -c log_statement=all -c log_connections=on -c log_disconnections=on
+  grpc:
+    depends_on:
+      - taurus-db
+    container_name: taurus
+    build:
+      context: .
+      target: "development"
+    ports:
+      - "9010:9010"
+      # go realize gui analyze
+      - "5002:5002"
+    environment:
+      DATABASE_URL: taurus-db
+      DATABASE_PORT: 5432
+      DATABASE_USER: taurus
+      DATABASE_PASSWORD: taurus
+      DATABASE_NAME: taurus-db
+      LISTEN_PORT: ":9010"
+    volumes:
+      - ./src/:/go/app
+      - go_dir:/go
+
+volumes:
+  db_data:
+  go_dir:

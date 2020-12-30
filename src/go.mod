@@ -6,6 +6,7 @@ require (
 	github.com/golang/protobuf v1.4.3
 	github.com/grpc-ecosystem/go-grpc-middleware v1.2.2
 	github.com/pkg/errors v0.9.1
+	github.com/satori/go.uuid v1.2.0
 	go.uber.org/multierr v1.6.0 // indirect
 	go.uber.org/zap v1.16.0
 	golang.org/x/net v0.0.0-20201224014010-6772e930b67b // indirect
@@ -14,4 +15,7 @@ require (
 	google.golang.org/genproto v0.0.0-20201214200347-8c77b98c765d // indirect
 	google.golang.org/grpc v1.34.0
 	google.golang.org/protobuf v1.25.0
+	gorm.io/driver/postgres v1.0.6
+	gorm.io/gorm v1.20.9
+	gorm.io/plugin/dbresolver v1.0.1
 )
