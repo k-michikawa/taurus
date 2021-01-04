@@ -5,7 +5,7 @@ import (
 	"taurus/infrastructures"
 	infraRepo "taurus/infrastructures/repositories"
 	"taurus/interfaces"
-	"taurus/usecases"
+	"taurus/use_cases"
 )
 
 // 抽象と実装の依存解決
@@ -13,8 +13,8 @@ func InjectUserRepository(db *infrastructures.Database) repositories.UserReposit
 	return infraRepo.NewUserRepository(*db)
 }
 
-func InjectUserUsecase(db *infrastructures.Database) usecases.UserUsecase {
-	return usecases.NewUserUsecase(InjectUserRepository(db))
+func InjectUserUsecase(db *infrastructures.Database) use_cases.UserUsecase {
+	return use_cases.NewUserUsecase(InjectUserRepository(db))
 }
 
 func InjectUserService(db *infrastructures.Database) interfaces.UserService {

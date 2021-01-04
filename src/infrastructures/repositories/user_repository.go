@@ -32,7 +32,7 @@ func (r *UserRepository) Store(name, email, password string) (*models.User, erro
 	return newUser, nil
 }
 
-func (r *UserRepository) Scan() ([]*models.User, error) {
+func (r *UserRepository) List() ([]*models.User, error) {
 	var users []*models.User
 	targetModel := &models.User{IsDeleted: true}
 	if err := r.Database.Not(targetModel).Find(&users); err != nil {
@@ -41,7 +41,7 @@ func (r *UserRepository) Scan() ([]*models.User, error) {
 	return users, nil
 }
 
-func (r *UserRepository) FindById(id string) (*models.User, error) {
+func (r *UserRepository) Find(id string) (*models.User, error) {
 	var user = &models.User{}
 	targetModel := &models.User{ID: uuid.FromStringOrNil(id)}
 	if err := r.Database.Where(targetModel).First(user); err != nil {

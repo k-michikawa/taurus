@@ -1,19 +1,75 @@
 # taurus
 
-Go で google.golang.org/grpc と gorm を使って gRPC で CRUD するやつ
+### Description
+
+Go で gorm 使って gRPC で CRUD するやつ
+
+Go 1.15.6
 
 検証用に grpcurl 入れておくと良いかも
 
 mac: `brew install grpcurl`
 
-example: `grpcurl -plaintext -import-path ./proto -proto user.proto -d '{"name": "taurus", "email": "taurus@test.com", "password": "password"}' localhost:9010 taurus.UserService/PostUser`
+example:
+
+```sh
+$ grpcurl -plaintext \
+          -import-path ./proto \
+          -proto user.proto \
+          -d '{"name": "taurus", "email": "taurus@test.com", "password": "password"}' \
+          localhost:9010 \
+          leo.UserService/PostUser
+```
+
+### tools
+
+golang-migrate のインストール
+
+```sh
+$ brew install golang-migrate
+```
 
 migration ファイルの生成
 
-1. install golang-migrate `brew install golang-migrate`
-2. `migrate create -ext sql -dir migrations -seq /* table-name */`
+```sh
+$ migrate create -ext sql -dir migrations -seq /* table-name */
+```
 
-migrate 方法
+protobuf のインストール
 
-1. `docker-compose up`で DB のコンテナを立ち上げる(多分初回は migrate してないので grpc の方は落ちる)
-2. `go run ./migrations`
+```sh
+$ brew install protobuf
+```
+
+protodep のインストール
+
+```sh
+$ go get github.com/stormcat24/protodep
+```
+
+OR
+
+```sh
+$ wget https://github.com/stormcat24/protodep/releases/download/0.0.8/protodep_darwin_amd64.tar.gz
+$ tar -xf protodep_darwin_amd64.tar.gz
+$ mv protodep /usr/local/bin/
+```
+
+AFTER
+
+```sh
+$ ssh-add ~/.ssh/id_rsa
+```
+
+### run
+
+起動するまで
+
+1. goenv とかで Go の環境作っておく
+2. protodep 落としてくる
+3. `$ protodep up`
+4. `$ protoc --proto_path ./proto --go_out=plugins=grpc:src/infrastructures/proto user.proto`
+5. `$ docker-compose run -d --service-ports taurus-db`
+6. `$ (cd ./migrations && go install && go run .)`
+7. `$ docker stop /* 5で立ち上げた container name */`
+8. `$ docker-compose up`

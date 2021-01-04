@@ -1,5 +1,5 @@
 syntax = "proto3";
-package taurus;
+package leo;
 
 service UserService {
     rpc PostUser (PostUserRequest) returns (PostUserResponse);
@@ -16,7 +16,7 @@ message User {
     string email     = 3;
     int64  createdAt = 4;
 
-    // TODO 本当は`optional int64`として定義できるがariesと合わせるために`oneof`で定義する
+    // TODO 本当は`optional int64`として定義できるがRustのtonicが対応してないためoneofを使用する
     oneof updatedAtOneof {
         int64  updatedAt = 5;
     }

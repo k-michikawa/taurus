@@ -4,7 +4,7 @@ import (
 	"context"
 	"database/sql"
 	proto "taurus/infrastructures/proto"
-	"taurus/usecases"
+	"taurus/use_cases"
 )
 
 // proto.UserServiceServer これに従わないと意味がないので、要件を満たすため抽象を作る
@@ -14,17 +14,17 @@ type UserService interface {
 
 // 実態はこっち
 type userService struct {
-	userUsecase usecases.UserUsecase
+	userUsecase use_cases.UserUsecase
 }
 
 // returnの型を抽象として実態を返す
-func NewService(userUsecase usecases.UserUsecase) UserService {
+func NewService(userUsecase use_cases.UserUsecase) UserService {
 	return &userService{userUsecase}
 }
 
 // PostUser Service
 func (s *userService) PostUser(c context.Context, r *proto.PostUserRequest) (*proto.PostUserResponse, error) {
-	user, err := s.userUsecase.PostUser(r.Name, r.Email, r.Password)
+	user, err := s.userUsecase.Store(r.Name, r.Email, r.Password)
 	if err != nil {
 		return nil, err
 	}
@@ -41,7 +41,7 @@ func (s *userService) PostUser(c context.Context, r *proto.PostUserRequest) (*pr
 
 // ListUser Service
 func (s *userService) ListUser(c context.Context, r *proto.ListUserRequest) (*proto.ListUserResponse, error) {
-	result, err := s.userUsecase.ListUser()
+	result, err := s.userUsecase.List()
 	if err != nil {
 		return nil, err
 	}
@@ -63,7 +63,7 @@ func (s *userService) ListUser(c context.Context, r *proto.ListUserRequest) (*pr
 
 // ReadUser Service
 func (s *userService) FindUser(c context.Context, r *proto.FindUserRequest) (*proto.FindUserResponse, error) {
-	user, err := s.userUsecase.FindUser(r.Id)
+	user, err := s.userUsecase.Find(r.Id)
 	if err != nil {
 		return nil, err
 	}
@@ -80,7 +80,7 @@ func (s *userService) FindUser(c context.Context, r *proto.FindUserRequest) (*pr
 
 // UpdateUser Service
 func (s *userService) UpdateUser(c context.Context, r *proto.UpdateUserRequest) (*proto.UpdateUserResponse, error) {
-	user, err := s.userUsecase.UpdateUser(r.Id, r.Name, r.Email, r.Password)
+	user, err := s.userUsecase.Update(r.Id, r.Name, r.Email, r.Password)
 	if err != nil {
 		return nil, err
 	}
@@ -97,7 +97,7 @@ func (s *userService) UpdateUser(c context.Context, r *proto.UpdateUserRequest) 
 
 // DeleteUser Service
 func (s *userService) DeleteUser(c context.Context, r *proto.DeleteUserRequest) (*proto.DeleteUserResponse, error) {
-	if err := s.userUsecase.DeleteUser(r.Id); err != nil {
+	if err := s.userUsecase.Delete(r.Id); err != nil {
 		return nil, err
 	}
 	return &proto.DeleteUserResponse{}, nil

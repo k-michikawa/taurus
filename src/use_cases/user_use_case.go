@@ -1,4 +1,4 @@
-package usecases
+package use_cases
 
 import (
 	"taurus/domains/models"
@@ -7,11 +7,11 @@ import (
 
 // 外側から内側を操作するときの抽象
 type UserUsecase interface {
-	PostUser(name, email, password string) (*models.User, error)
-	ListUser() ([]*models.User, error)
-	FindUser(id string) (*models.User, error)
-	UpdateUser(id, name, email, password string) (*models.User, error)
-	DeleteUser(id string) error
+	Store(name, email, password string) (*models.User, error)
+	List() ([]*models.User, error)
+	Find(id string) (*models.User, error)
+	Update(id, name, email, password string) (*models.User, error)
+	Delete(id string) error
 }
 
 // 実態はこっち
@@ -24,7 +24,7 @@ func NewUserUsecase(repo repositories.UserRepository) UserUsecase {
 	return &userUsecase{repo}
 }
 
-func (u *userUsecase) PostUser(name, email, password string) (*models.User, error) {
+func (u *userUsecase) Store(name, email, password string) (*models.User, error) {
 	user, err := u.repo.Store(name, email, password)
 	if err != nil {
 		return nil, err
@@ -32,23 +32,23 @@ func (u *userUsecase) PostUser(name, email, password string) (*models.User, erro
 	return user, nil
 }
 
-func (u *userUsecase) ListUser() ([]*models.User, error) {
-	users, err := u.repo.Scan()
+func (u *userUsecase) List() ([]*models.User, error) {
+	users, err := u.repo.List()
 	if err != nil {
 		return nil, err
 	}
 	return users, nil
 }
 
-func (u *userUsecase) FindUser(id string) (*models.User, error) {
-	user, err := u.repo.FindById(id)
+func (u *userUsecase) Find(id string) (*models.User, error) {
+	user, err := u.repo.Find(id)
 	if err != nil {
 		return nil, err
 	}
 	return user, nil
 }
 
-func (u *userUsecase) UpdateUser(id, name, email, password string) (*models.User, error) {
+func (u *userUsecase) Update(id, name, email, password string) (*models.User, error) {
 	user, err := u.repo.Update(id, name, email, password)
 	if err != nil {
 		return nil, err
@@ -56,7 +56,7 @@ func (u *userUsecase) UpdateUser(id, name, email, password string) (*models.User
 	return user, nil
 }
 
-func (u *userUsecase) DeleteUser(id string) error {
+func (u *userUsecase) Delete(id string) error {
 	if err := u.repo.Delete(id); err != nil {
 		return err
 	}
