@@ -32,7 +32,7 @@ $ brew install golang-migrate
 migration ファイルの生成
 
 ```sh
-$ migrate create -ext sql -dir migrations -seq /* table-name */
+$ migrate create -ext sql -dir migrations -seq /* filename */
 ```
 
 protobuf のインストール
