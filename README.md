@@ -71,5 +71,5 @@ $ ssh-add ~/.ssh/id_rsa
 4. `$ protoc --proto_path ./proto --go_out=plugins=grpc:src/infrastructures/proto user.proto`
 5. `$ docker-compose up -d taurus-db`
 6. `$ (cd ./migrations && go install && go run .)`
-7. `$ docker stop taurus-db`
+7. `$ docker stop`
 8. `$ docker-compose up`
