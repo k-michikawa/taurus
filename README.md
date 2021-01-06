@@ -69,7 +69,7 @@ $ ssh-add ~/.ssh/id_rsa
 2. protodep 落としてくる
 3. `$ protodep up`
 4. `$ protoc --proto_path ./proto --go_out=plugins=grpc:src/infrastructures/proto user.proto`
-5. `$ docker-compose run -d --service-ports taurus-db`
+5. `$ docker-compose up -d taurus-db`
 6. `$ (cd ./migrations && go install && go run .)`
-7. `$ docker stop /* 5で立ち上げた container name */`
+7. `$ docker stop taurus-db`
 8. `$ docker-compose up`
